@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import AllTheFilm from "./components/AllTheFilm";
+import CustomFooter from "./components/CustomFooter";
+import CustomNavbar from "./components/CustomNavbar";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+      <header>
+        <CustomNavbar />
       </header>
+      <main>
+        <AllTheFilm fetch="http://www.omdbapi.com/?apikey=be0ad7de&s=Spider-Man" />
+        <AllTheFilm fetch="http://www.omdbapi.com/?apikey=be0ad7de&s=Creed" />
+        <AllTheFilm fetch="http://www.omdbapi.com/?apikey=be0ad7de&s=Marvel" />
+      </main>
+      <footer>
+        <CustomFooter />
+      </footer>
     </div>
   );
 }
