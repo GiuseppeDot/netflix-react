@@ -12,15 +12,17 @@
 //     )
 // }
 
-import { Component } from "react";
+import { useEffect, useState } from "react";
 import FilmList from "../components/FilmList";
-class AllTheFilm extends Component {
-  state = {
-    films: [],
-  };
+const AllTheFilm = (props) => {
+  // state = {
+  //   films: [],
+  // };
 
-  getFilms = () => {
-    fetch(this.props.fetch)
+  const [film, setFilm] = useState([]);
+
+  const getFilms = () => {
+    fetch(props.fetch)
       .then((response) => {
         console.log("RESPONSE", response);
         if (response.ok) {
@@ -31,22 +33,26 @@ class AllTheFilm extends Component {
       })
       .then((arrayOfFilm) => {
         console.log("arrayOfFilms", arrayOfFilm);
-        this.setState({
-          films: arrayOfFilm.Search,
-        });
+        // this.setState({
+        //   films: arrayOfFilm.Search,
+        // });
+
+        setFilm(arrayOfFilm.Search);
       })
       .catch((error) => {
         console.log("ERRORE", error);
       });
   };
 
-  componentDidMount() {
-    this.getFilms();
-  }
+  // componentDidMount() {
+  //   this.getFilms();
 
-  render() {
-    return <FilmList FilmList={this.state.films} />;
-  }
-}
+  useEffect(() => {
+    getFilms();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  return <FilmList FilmList={film} />;
+};
 
 export default AllTheFilm;

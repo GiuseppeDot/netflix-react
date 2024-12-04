@@ -1,5 +1,6 @@
 import { Navbar, Container, Nav, Form, Button } from "react-bootstrap";
 import netflixLogo from "../assets/netflix_logo.png";
+import { Link } from "react-router-dom";
 
 const CustomNavbar = () => {
   return (
@@ -17,12 +18,16 @@ const CustomNavbar = () => {
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav className="me-auto my-2 my-lg-0" navbarScroll>
-              <Nav.Link href="#action1">Home</Nav.Link>
-              <Nav.Link href="#action2">Serie TV</Nav.Link>
-              <Nav.Link href="#action3">Film</Nav.Link>
-              <Nav.Link href="#action3">Nuovi e Popolari</Nav.Link>
-              <Nav.Link href="#action3">La mia lista</Nav.Link>
-              <Nav.Link href="#action3">Sfogla per lingua</Nav.Link>
+              <Nav.Link href="/">Home</Nav.Link>
+              <Link to="/Creed" className="nav-link">
+                Serie TV
+              </Link>
+              <Link to="/Marvel" className="nav-link">
+                Film
+              </Link>
+              <Nav.Link href="#action4">Nuovi e Popolari</Nav.Link>
+              <Nav.Link href="#action5">La mia lista</Nav.Link>
+              <Nav.Link href="#action6">Sfogla per lingua</Nav.Link>
             </Nav>
             <Form className="d-flex">
               <Form.Control
